@@ -29,7 +29,7 @@ public:
 		else
 		{
 			char buff = QueueArr[start];
-			if (start = 0) start = end;
+			if (start < 1) start = size;
 			else start--;
 			return buff;
 		}
