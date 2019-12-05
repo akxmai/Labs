@@ -30,7 +30,7 @@ int main()
 	Stack stack(length);
 	char* string;
 	string = Read(path, length);
-	cout << "Введенная строка \"" << string << "\" ";
+	cout << "Cтрока \"" << string << "\" из файла " << path;
 	for (int i = 0; i < strlen(string); i++) 
 	{
 		if (string[i] != ' ' && string[i] != '\0' && string[i] != '\n')
@@ -43,7 +43,7 @@ int main()
 	{
 		if (queue.Pop() != stack.Pop()) palindrome = false;
 	}
-	if (palindrome == false) cout << "не";
-	cout << "является палиндромом";
+	if (palindrome == false) cout << " не";
+	cout << " является палиндромом";
 	return 0;
 }
