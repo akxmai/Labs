@@ -30,6 +30,7 @@ int main()
 	Stack stack(length);
 	char* string;
 	string = Read(path, length);
+	cout << "Введенная строка \"" << string << "\" ";
 	for (int i = 0; i < strlen(string); i++) 
 	{
 		if (string[i] != ' ' && string[i] != '\0' && string[i] != '\n')
@@ -38,19 +39,11 @@ int main()
 			stack.Push(string[i]);
 		}
 	}
-	//while (queue.IsEmpty() == false) 
-	//{
-	//	if (queue.Pop() != stack.Pop()) palindrome = false;
-
-	//}
-	while (queue.IsEmpty() == false)
+	while (queue.IsEmpty() == false) 
 	{
-		cout << queue.Pop();
+		if (queue.Pop() != stack.Pop()) palindrome = false;
 	}
-	cout << endl;
-	while (stack.IsEmpty() == false)
-	{
-		cout << stack.Pop();
-	}
+	if (palindrome == false) cout << "не";
+	cout << "является палиндромом";
 	return 0;
 }
