@@ -21,6 +21,8 @@ char* Read(string path, int length = 20)
 }
 int main()
 {
+	system("chcp 1251");
+	system("cls");
 	bool palindrome = true;
 	string path = "file.txt";
 	const int length = 30; //длина строки
