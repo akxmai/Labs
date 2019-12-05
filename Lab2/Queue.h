@@ -17,9 +17,9 @@ public:
 	}
 	void Push(char a)
 	{
-		if (end = 0) end = size;
-		else end--;
 		QueueArr[end] = a;
+		if (end < 1) end = size;
+		else end--;
 	}
 	char Pop()
 	{
@@ -28,9 +28,10 @@ public:
 		}
 		else
 		{
+			char buff = QueueArr[start];
 			if (start = 0) start = end;
 			else start--;
-			return QueueArr[start - 1];
+			return buff;
 		}
 	}
 	char Front() {
