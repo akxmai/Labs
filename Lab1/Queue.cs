@@ -30,8 +30,7 @@ namespace Lab1
             }
             else
             {
-                int a = 0;
-                a = queue[t];
+                int a = queue[t];
                 t++;
                 return a;
             }

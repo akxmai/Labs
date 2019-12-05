@@ -3,6 +3,11 @@ using System.IO;
 
 namespace Lab1
 {
+    //13. Используя очередь, решить следующую задачу:
+    //Написать программу, которая читает из файла последовательность целых чисел, и помещает все четные числа
+    //в одну очередь, а нечетные - в другую. Содержимое каждой очереди вывести на экран.
+    //Для реализации АТД Очередь использовать массив.
+
     class Program
     {
         static void Main(string[] args)
@@ -45,14 +50,14 @@ namespace Lab1
             Console.WriteLine("Первая очередь:");
             while (!q1.IsEmpty())
             {
-                Console.WriteLine(q1.Pop());
+                Console.Write(q1.Pop() + " ");
             }
-            Console.WriteLine("Вторая очередь:");
+            Console.WriteLine("\nВторая очередь:");
             while (!q2.IsEmpty())
             {
-                Console.WriteLine(q2.Pop());
+                Console.Write(q2.Pop() + " ");
             }
             Console.ReadKey();
         }
     }
-}
+} 
