@@ -4,43 +4,40 @@ class Queue
 {
 private:
 	int size;
-	int t;
+	int start;
+	int end;
 	char* QueueArr;
 public:
 	Queue(int _size = 100)
 	{
 		size = _size;
-		t = size + 1;
+		start = size;
+		end = start;
 		QueueArr = new char[size];
 	}
 	void Push(char a)
 	{
-		if (t < 0)
-		{
-			std::cout << "Очередь перегружена!";
-		}
-		else
-		{
-			t--;
-			QueueArr[t] = a;
-		}
+		if (end = 0) end = size;
+		else end--;
+		QueueArr[end] = a;
 	}
 	char Pop()
 	{
-		if (t > size) {
+		if (start == end) {
 			std::cout << "Очередь пуста!";
 		}
 		else
 		{
-			t++;
-			return QueueArr[t - 1];
+			if (start = 0) start = end;
+			else start--;
+			return QueueArr[start - 1];
 		}
 	}
-	char Top() {
-		return QueueArr[t];
+	char Front() {
+		return QueueArr[start];
 	}
 	bool IsEmpty() {
-		return (t == size + 1) ? true : false;
+		return (start == end) ? true : false;
 	}
 };
 
