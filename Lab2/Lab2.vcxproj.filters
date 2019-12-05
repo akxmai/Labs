@@ -27,7 +27,4 @@
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <Text Include="..\Debug\file.txt" />
-  </ItemGroup>
 </Project>

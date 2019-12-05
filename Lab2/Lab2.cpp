@@ -19,25 +19,35 @@ char* Read(string path, int length = 20)
 	fs.close();
 	return line;
 }
-
 int main()
 {
+	bool palindrome = true;
 	string path = "file.txt";
 	const int length = 30; //длина строки
 	Queue queue(length);
 	Stack stack(length);
 	char* string;
 	string = Read(path, length);
-	for (int i = 0; i < strlen(string); i++)
+	for (int i = 0; i < strlen(string); i++) 
 	{
-		queue.Push(string[i]);
-		stack.Push(string[i]);
+		if (string[i] != ' ' && string[i] != '\0' && string[i] != '\n')
+		{
+			queue.Push(string[i]);
+			stack.Push(string[i]);
+		}
 	}
-	while (queue.IsEmpty() == false){
+	//while (queue.IsEmpty() == false) 
+	//{
+	//	if (queue.Pop() != stack.Pop()) palindrome = false;
+
+	//}
+	while (queue.IsEmpty() == false)
+	{
 		cout << queue.Pop();
 	}
 	cout << endl;
-	while (stack.IsEmpty() == false) {
+	while (stack.IsEmpty() == false)
+	{
 		cout << stack.Pop();
 	}
 	return 0;
