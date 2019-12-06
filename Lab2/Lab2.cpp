@@ -1,5 +1,5 @@
-﻿// Считайте строку текста, помещая каждый непустой символ и в очередь, и в стек. Проверьте, не является ли текст
-// палидромом. Пример палиндрома: "А роза упала на лапу Азора".
+﻿// Считайте строку текста, помещая каждый непустой символ и в очередь, и в стек. 
+// Проверьте, не является ли текст палидромом. Пример палиндрома: "А роза упала на лапу Азора".
 // Для реализации АТД Стек и Очередь использовать динамическое распределение памяти.
 
 #include <iostream>
@@ -24,8 +24,8 @@ int main()
 	system("chcp 1251");
 	system("cls");
 	bool palindrome = true;
-	string path = "file.txt";
-	const int length = 30; //длина строки
+	string path = "file.txt"; // название файла со строкой
+	const int length = 50; // длина строки
 	Queue queue(length);
 	Stack stack(length);
 	char* string;
@@ -41,7 +41,11 @@ int main()
 	}
 	while (queue.IsEmpty() == false) 
 	{
-		if (queue.Pop() != stack.Pop()) palindrome = false;
+		if (queue.Pop() != stack.Pop())
+		{
+			palindrome = false;
+			break;
+		}
 	}
 	if (palindrome == false) cout << " не";
 	cout << " является палиндромом";

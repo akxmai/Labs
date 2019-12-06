@@ -6,7 +6,7 @@ private:
 	int size;
 	int start;
 	int end;
-	char* QueueArr;
+	char *QueueArr;
 public:
 	Queue(int _size = 100)
 	{
@@ -17,7 +17,7 @@ public:
 	}
 	void Push(char a)
 	{
-		if (end = start - 1) start--;
+		if (end == start + 1) start--;
 		QueueArr[end] = a;
 		if (end < 1) end = size;
 		else end--;
