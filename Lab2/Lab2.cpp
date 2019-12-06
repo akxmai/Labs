@@ -19,29 +19,13 @@ char* Read(string path, int length = 20)
 	fs.close();
 	return line;
 }
-int main()
+void Output(Queue q, Stack s, string path, char* line)
 {
-	system("chcp 1251");
-	system("cls");
 	bool palindrome = true;
-	string path = "file.txt"; // название файла со строкой
-	const int length = 50; // длина строки
-	Queue queue(length);
-	Stack stack(length);
-	char* string;
-	string = Read(path, length);
-	cout << "Cтрока \"" << string << "\" из файла " << path;
-	for (int i = 0; i < strlen(string); i++) 
+	cout << "Cтрока \"" << line << "\" из файла " << path;
+	while (q.IsEmpty() == false)
 	{
-		if (string[i] != ' ' && string[i] != '\0' && string[i] != '\n')
-		{
-			queue.Push(string[i]);
-			stack.Push(string[i]);
-		}
-	}
-	while (queue.IsEmpty() == false) 
-	{
-		if (queue.Pop() != stack.Pop())
+		if (q.Pop() != s.Pop())
 		{
 			palindrome = false;
 			break;
@@ -49,5 +33,25 @@ int main()
 	}
 	if (palindrome == false) cout << " не";
 	cout << " является палиндромом";
+}
+int main()
+{
+	system("chcp 1251");
+	system("cls");
+	string path = "file.txt"; // название файла со строкой
+	const int length = 50; // длина строки
+	Queue queue(length);
+	Stack stack(length);
+	char* line;
+	line = Read(path, length);
+	for (int i = 0; i < strlen(line); i++)
+	{
+		if (line[i] != ' ' && line[i] != '\0' && line[i] != '\n')
+		{
+			queue.Push(line[i]);
+			stack.Push(line[i]);
+		}
+	}
+	Output(queue, stack, path, line);
 	return 0;
 }
