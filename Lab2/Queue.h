@@ -17,6 +17,7 @@ public:
 	}
 	void Push(char a)
 	{
+		if (end = start - 1) start--;
 		QueueArr[end] = a;
 		if (end < 1) end = size;
 		else end--;
