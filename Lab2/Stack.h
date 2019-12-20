@@ -3,44 +3,41 @@
 class Stack
 {
 private:
-	int size;
-	int t;
-	char* StackArr;
-public:
-	Stack(int _size = 100)
+	struct StackNode 
 	{
-		size = _size;
-		t = -1;
-		StackArr = new char[size];
+		char data;
+		StackNode* next;
+	};
+	StackNode* stack;
+public:
+	Stack() 
+	{
+		stack = nullptr;
 	}
 	void Push(char a)
 	{
-		if(t > size)
-		{
-			std::cout << "Стек перегружен!";
-		}
-		else
-		{
-			t++;
-			StackArr[t] = a;
-		}
+		StackNode* tmp = new StackNode;
+		tmp->data = a;
+		tmp->next = stack;
+		stack = tmp;
 	}
-	char Pop()
+	int Pop()
 	{
-		if (t < 0) {
-			std::cout << "Стек пуст!";
-		}
-		else 
+		if (stack != nullptr)
 		{
-			t--;
-			return StackArr[t + 1];
+			char value = stack->data;
+			StackNode* tmp = stack;
+			stack = stack->next;
+			delete tmp;
+			return value;
 		}
+		throw std::exception("");
 	}
 	char Top() {
-		return StackArr[t];
+		
 	}
 	bool IsEmpty() {
-		return (t == -1) ? true : false;
+		return stack == nullptr;
 	}
 };
 

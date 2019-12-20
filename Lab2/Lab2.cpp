@@ -19,13 +19,13 @@ char* Read(string path, int length = 20)
 	fs.close();
 	return line;
 }
-void Output(Queue q, Stack s, string path, char* line)
+void Output(Queue* q, Stack* s, string path, char* line)
 {
 	bool palindrome = true;
 	cout << "Cтрока \"" << line << "\" из файла " << path;
-	while (q.IsEmpty() == false)
+	while (q->IsEmpty() == false)
 	{
-		if (q.Pop() != s.Pop())
+		if (q->Dequeue() != s->Pop())
 		{
 			palindrome = false;
 			break;
@@ -40,16 +40,16 @@ int main()
 	system("cls");
 	string path = "file.txt"; // название файла со строкой
 	const int length = 50; // длина строки
-	Queue queue(length);
-	Stack stack(length);
+	Queue* queue = new Queue();
+	Stack* stack = new Stack();
 	char* line;
 	line = Read(path, length);
 	for (int i = 0; i < strlen(line); i++)
 	{
 		if (line[i] != ' ' && line[i] != '\0' && line[i] != '\n')
 		{
-			queue.Push(line[i]);
-			stack.Push(line[i]);
+			queue->Enqueue(line[i]);
+			stack->Push(line[i]);
 		}
 	}
 	Output(queue, stack, path, line);
