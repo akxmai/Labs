@@ -34,7 +34,7 @@ public:
 		throw std::exception("");
 	}
 	char Top() {
-		
+		return stack->data;
 	}
 	bool IsEmpty() {
 		return stack == nullptr;

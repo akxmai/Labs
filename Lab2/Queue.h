@@ -45,7 +45,7 @@ public:
 		throw std::exception("");
 	}
 	char Top() {
-
+		return queue->data;
 	}
 	bool IsEmpty() {
 		return queue == nullptr;
