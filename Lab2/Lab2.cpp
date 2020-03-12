@@ -4,26 +4,36 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
+#include <cstring>
 #include "Queue.h"
 #include "Stack.h"
 
 using namespace std;
 
-char* Read(string path, int length = 20)
-{	
-	char* line = new char(length + 1);
+char* Read(const string& path, int length = 20)
+{
+	char line[length + 1];
 	ifstream fs;
 	fs.open(path);
 	fs.getline(line, length, '\n');
 	fs.close();
 	return line;
 }
-void Output(Queue* q, Stack* s, string path, char* line)
+void Write(Queue* &q, Stack* &s, char* line){
+    for (int i = 0; i < strlen(line); i++)
+    {
+        if (line[i] != ' ' && line[i] != '\0' && line[i] != '\n')
+        {
+            q->Enqueue(line[i]);
+            s->Push(line[i]);
+        }
+    }
+}
+void Output(Queue* q, Stack* s, const string& path, char* line)
 {
 	bool palindrome = true;
 	cout << "Cтрока \"" << line << "\" из файла " << path;
-	while (q->IsEmpty() == false)
+	while (!q->IsEmpty())
 	{
 		if (q->Dequeue() != s->Pop())
 		{
@@ -31,27 +41,18 @@ void Output(Queue* q, Stack* s, string path, char* line)
 			break;
 		}
 	}
-	if (palindrome == false) cout << " не";
+	if (!palindrome) cout << " не";
 	cout << " является палиндромом";
 }
 int main()
 {
-	system("chcp 1251");
-	system("cls");
 	string path = "file.txt"; // название файла со строкой
-	const int length = 50; // длина строки
-	Queue* queue = new Queue();
-	Stack* stack = new Stack();
-	char* line;
+	const int length = 100; // длина строки
+	auto* queue = new Queue();
+	auto* stack = new Stack();
+    char* line;
 	line = Read(path, length);
-	for (int i = 0; i < strlen(line); i++)
-	{
-		if (line[i] != ' ' && line[i] != '\0' && line[i] != '\n')
-		{
-			queue->Enqueue(line[i]);
-			stack->Push(line[i]);
-		}
-	}
+	Write(queue, stack, line);
 	Output(queue, stack, path, line);
 	return 0;
 }

@@ -22,7 +22,7 @@ public:
 		}
 		else 
 		{
-			QueueNode* tmp = new QueueNode;
+			auto* tmp = new QueueNode;
 			tmp->data = a;
 			tmp->next = nullptr;
 			QueueNode* temp = queue;
@@ -42,11 +42,11 @@ public:
 			delete tmp;
 			return value;
 		}
-		throw std::exception("");
-	}
+        return 0;
+    }
 	char Top() {
-
-	}
+        return queue->data;
+    }
 	bool IsEmpty() {
 		return queue == nullptr;
 	}

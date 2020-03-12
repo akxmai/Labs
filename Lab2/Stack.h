@@ -16,10 +16,22 @@ public:
 	}
 	void Push(char a)
 	{
-		StackNode* tmp = new StackNode;
-		tmp->data = a;
-		tmp->next = stack;
-		stack = tmp;
+        if (stack == nullptr) {
+            stack = new StackNode;
+            stack->data = a;
+            stack->next = nullptr;
+        }
+        else
+        {
+            auto* tmp = new StackNode;
+            tmp->data = a;
+            tmp->next = nullptr;
+            StackNode* temp = stack;
+
+            while (temp->next != nullptr)
+                temp = temp->next;
+            temp->next = tmp;
+        }
 	}
 	int Pop()
 	{
@@ -31,10 +43,10 @@ public:
 			delete tmp;
 			return value;
 		}
-		throw std::exception("");
+		return 0;
 	}
 	char Top() {
-		
+		return stack->data;
 	}
 	bool IsEmpty() {
 		return stack == nullptr;
