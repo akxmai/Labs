@@ -3,35 +3,23 @@
 class Stack
 {
 private:
-	struct StackNode 
+	struct StackNode
 	{
 		char data;
 		StackNode* next;
 	};
 	StackNode* stack;
 public:
-	Stack() 
+	Stack()
 	{
 		stack = nullptr;
 	}
 	void Push(char a)
 	{
-        if (stack == nullptr) {
-            stack = new StackNode;
-            stack->data = a;
-            stack->next = nullptr;
-        }
-        else
-        {
-            auto* tmp = new StackNode;
-            tmp->data = a;
-            tmp->next = nullptr;
-            StackNode* temp = stack;
-
-            while (temp->next != nullptr)
-                temp = temp->next;
-            temp->next = tmp;
-        }
+		auto* tmp = new StackNode;
+		tmp->data = a;
+		tmp->next = stack;
+		stack = tmp;
 	}
 	int Pop()
 	{
@@ -52,4 +40,3 @@ public:
 		return stack == nullptr;
 	}
 };
-

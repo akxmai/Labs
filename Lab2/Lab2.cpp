@@ -10,9 +10,9 @@
 
 using namespace std;
 
-char* Read(const string& path, int length = 20)
+char* Read(const string& path, const int length = 20)
 {
-	char line[length + 1];
+	char* line = new char;
 	ifstream fs;
 	fs.open(path);
 	fs.getline(line, length, '\n');
@@ -46,6 +46,8 @@ void Output(Queue* q, Stack* s, const string& path, char* line)
 }
 int main()
 {
+	system("chcp 1251");
+	system("cls");
 	string path = "file.txt"; // название файла со строкой
 	const int length = 100; // длина строки
 	auto* queue = new Queue();
